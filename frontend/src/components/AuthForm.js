@@ -14,7 +14,7 @@ function AuthForm() {
 
   const [searchParams] = useSearchParams();
   const isLogin = searchParams.get("mode") === "login";
-  const isSubmiting = navigation.state === "submitting";
+  const isSubmitting = navigation.state === "submitting";
 
   return (
     <>
@@ -22,9 +22,9 @@ function AuthForm() {
         <h1>{isLogin ? "Log in" : "Create a new user"}</h1>
         {data && data.errors && (
           <ul>
-            {Object.values(data.errors).map((err) => {
-              <li key={err}>{err}</li>;
-            })}
+            {Object.values(data.errors).map((err) => (
+              <li key={err}>{err}</li>
+            ))}
           </ul>
         )}
         {data && data.message && <p>{data.message}</p>}
@@ -40,8 +40,8 @@ function AuthForm() {
           <Link to={`?mode=${isLogin ? "signup" : "login"}`}>
             {isLogin ? "Create new user" : "Login"}
           </Link>
-          <button disabled={isSubmiting}>
-            {isSubmiting ? "Submitting..." : "Save"}
+          <button disabled={isSubmitting}>
+            {isSubmitting ? "Submitting..." : "Save"}
           </button>
         </div>
       </Form>
